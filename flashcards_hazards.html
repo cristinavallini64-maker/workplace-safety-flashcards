@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hazards in the Workplace — Speaking Flashcards</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0f1117;
+    --surface: #1a1d27;
+    --surface2: #22263a;
+    --accent: #e8c97a;
+    --accent2: #7ab8e8;
+    --text: #f0ece0;
+    --muted: #7a7d8f;
+    --border: rgba(255,255,255,0.07);
+    --radius: 16px;
+  }
+
+  body {
+    font-family: Georgia, serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+  }
+
+  header { text-align: center; margin-bottom: 2rem; }
+
+  header .label {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+
+  header h1 {
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.2;
+  }
+
+  .progress-bar-wrap { width: 100%; max-width: 560px; margin-bottom: 1.2rem; }
+
+  .progress-info {
+    display: flex;
+    justify-content: space-between;
+    font-family: Arial, sans-serif;
+    font-size: 12px;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+
+  .progress-bar { height: 3px; background: var(--surface2); border-radius: 2px; overflow: hidden; }
+  .progress-fill { height: 100%; background: var(--accent); border-radius: 2px; transition: width 0.4s ease; }
+
+  .number-row {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 560px;
+    margin-bottom: 1.2rem;
+  }
+
+  .num-dot {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    color: var(--muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  .num-dot.active { background: var(--accent); color: #1a1506; border-color: transparent; font-weight: 700; }
+  .num-dot.seen { border-color: rgba(232,201,122,0.35); color: var(--accent); }
+
+  .card-scene {
+    width: 100%;
+    max-width: 560px;
+    height: 300px;
+    perspective: 1200px;
+    cursor: pointer;
+    margin-bottom: 1.2rem;
+  }
+
+  .card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.5s cubic-bezier(.4,0,.2,1);
+  }
+
+  .card.flipped { transform: rotateY(180deg); }
+
+  .card-face {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    border-radius: var(--radius);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 1.8rem;
+    text-align: center;
+  }
+
+  .card-front { background: var(--surface); border: 1px solid var(--border); }
+  .card-back { background: var(--surface2); border: 1px solid rgba(232,201,122,0.15); transform: rotateY(180deg); }
+
+  .card-tag {
+    font-family: Arial, sans-serif;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .card-front .card-tag { color: var(--accent2); }
+  .card-back .card-tag { color: var(--accent); }
+
+  .card-question {
+    font-size: clamp(1rem, 2.5vw, 1.3rem);
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--text);
+  }
+
+  .card-answer {
+    font-family: Arial, sans-serif;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--text);
+  }
+
+  .card-answer strong { color: var(--accent); }
+
+  .flip-hint {
+    font-family: Arial, sans-serif;
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 1.2rem;
+  }
+
+  .controls { display: flex; gap: 10px; width: 100%; max-width: 560px; }
+
+  .btn {
+    flex: 1;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  .btn-prev { background: var(--surface2); color: var(--muted); border: 1px solid var(--border); }
+  .btn-next { background: var(--accent); color: #1a1506; flex: 2; }
+  .btn-flip { background: var(--surface2); color: var(--text); border: 1px solid rgba(122,184,232,0.2); flex: 2; }
+  .btn:disabled { opacity: 0.3; cursor: default; }
+
+  .done-screen {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 400px;
+    gap: 1rem;
+  }
+
+  .done-screen h2 { font-size: 1.8rem; font-weight: 400; }
+  .done-screen p { font-family: Arial, sans-serif; color: var(--muted); font-size: 14px; line-height: 1.6; }
+
+  .btn-restart {
+    margin-top: 0.5rem;
+    padding: 14px 32px;
+    background: var(--accent);
+    color: #1a1506;
+    border: none;
+    border-radius: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="label">Workplace Safety · Unit 1</div>
+  <h1>Hazards in the Workplace</h1>
+</header>
+
+<div class="progress-bar-wrap">
+  <div class="progress-info">
+    <span id="prog-text">Card 1 of 11</span>
+    <span id="prog-pct">0%</span>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" id="prog-fill" style="width:0%"></div></div>
+</div>
+
+<div class="number-row" id="num-row"></div>
+
+<div class="card-scene" id="card-scene" onclick="flipCard()">
+  <div class="card" id="card">
+    <div class="card-face card-front">
+      <div class="card-tag">Question — speak your answer</div>
+      <div class="card-question" id="q-text"></div>
+      <div class="flip-hint">&#8635; tap card to reveal answer</div>
+    </div>
+    <div class="card-face card-back">
+      <div class="card-tag">Model answer</div>
+      <div class="card-answer" id="a-text"></div>
+    </div>
+  </div>
+</div>
+
+<div class="controls">
+  <button class="btn btn-prev" id="btn-prev" onclick="go(-1)">&#8592; Back</button>
+  <button class="btn btn-flip" onclick="flipCard()">Flip card</button>
+  <button class="btn btn-next" id="btn-next" onclick="go(1)">Next &#8594;</button>
+</div>
+
+<div class="done-screen" id="done-screen">
+  <div style="font-size:2.5rem">&#10003;</div>
+  <h2>All done!</h2>
+  <p>You have been through all 11 questions. Go back and review any cards you found difficult.</p>
+  <button class="btn-restart" onclick="restart()">Start again</button>
+</div>
+
+<script>
+var cards = [
+  { q: "What is a hazard?", a: "A hazard is <strong>anything that has the potential to cause harm</strong>. Hazards are present in many forms, especially in industrial and manufacturing environments." },
+  { q: "What are physical hazards? Give two examples.", a: "Physical hazards include <strong>noise, extreme temperatures, poor lighting, and moving machinery with exposed parts</strong>. Workers may also be exposed to radiation from UV lamps or laser equipment." },
+  { q: "What are chemical hazards? Where can you find them in electronics manufacturing?", a: "Chemical hazards come from contact with or inhalation of <strong>solvents, adhesives, and cleaning agents</strong> used in circuit board assembly. They can cause skin irritation, respiratory problems, or organ damage." },
+  { q: "Why are electrical hazards particularly significant in electronics environments?", a: "Because workers operate near <strong>live conductors, high-voltage systems, and automated machinery</strong>. Contact with faulty or inadequately earthed equipment can cause electric shock, burns, or cardiac arrest." },
+  { q: "What are ergonomic hazards and what problems can they cause?", a: "Ergonomic hazards include <strong>repetitive movements, awkward postures, and prolonged standing or sitting</strong>. They can lead to musculoskeletal disorders that affect workers for the rest of their lives." },
+  { q: "What are psychosocial hazards? Give some examples.", a: "Psychosocial hazards include <strong>excessive workload, lack of control over tasks, and poor communication</strong>. They are a significant threat to workers' mental health and wellbeing." },
+  { q: "How many main categories of hazard are mentioned in the text?", a: "Five categories: <strong>physical, chemical, electrical, ergonomic, and psychosocial</strong> hazards." },
+  { q: "Is identifying hazards a one-off task? Why or why not?", a: "No. It <strong>must be carried out regularly</strong>, updated whenever processes or equipment change, and must involve the workers themselves." },
+  { q: "Why should workers be involved in identifying hazards?", a: "Because <strong>workers are often the first to notice when something is wrong</strong>. They have direct experience of the environment and the tasks being carried out." },
+  { q: "What kind of damage can chemical hazards cause to the human body?", a: "They can cause <strong>skin irritation, respiratory problems, and long-term organ damage</strong>, especially if workers are not properly protected." },
+  { q: "What does the word 'hazard' mean in Italian? Use it in a sentence.", a: "<strong>Hazard = pericolo / rischio</strong>. Example: 'Noise is a physical hazard that can damage hearing over time.'" }
+];
+
+var current = 0;
+var seen = {};
+var flipped = false;
+
+function render() {
+  document.getElementById('q-text').innerHTML = cards[current].q;
+  document.getElementById('a-text').innerHTML = cards[current].a;
+  flipped = false;
+  document.getElementById('card').classList.remove('flipped');
+  seen[current] = true;
+  var seenCount = Object.keys(seen).length;
+  var pct = Math.round((seenCount / cards.length) * 100);
+  document.getElementById('prog-text').textContent = 'Card ' + (current + 1) + ' of ' + cards.length;
+  document.getElementById('prog-pct').textContent = pct + '%';
+  document.getElementById('prog-fill').style.width = pct + '%';
+  var dots = document.querySelectorAll('.num-dot');
+  for (var i = 0; i < dots.length; i++) {
+    dots[i].classList.remove('active', 'seen');
+    if (i === current) dots[i].classList.add('active');
+    else if (seen[i]) dots[i].classList.add('seen');
+  }
+  document.getElementById('btn-prev').disabled = (current === 0);
+  document.getElementById('btn-next').textContent = current === cards.length - 1 ? 'Finish' : 'Next \u2192';
+}
+
+function flipCard() {
+  flipped = !flipped;
+  document.getElementById('card').classList.toggle('flipped', flipped);
+}
+
+function go(dir) {
+  if (dir === 1 && current === cards.length - 1) { showDone(); return; }
+  current = Math.max(0, Math.min(cards.length - 1, current + dir));
+  render();
+}
+
+function showDone() {
+  document.getElementById('card-scene').style.display = 'none';
+  document.querySelector('.controls').style.display = 'none';
+  document.getElementById('num-row').style.display = 'none';
+  document.getElementById('done-screen').style.display = 'flex';
+}
+
+function restart() {
+  current = 0; seen = {}; flipped = false;
+  document.getElementById('card-scene').style.display = 'block';
+  document.querySelector('.controls').style.display = 'flex';
+  document.getElementById('num-row').style.display = 'flex';
+  document.getElementById('done-screen').style.display = 'none';
+  render();
+}
+
+var numRow = document.getElementById('num-row');
+for (var i = 0; i < cards.length; i++) {
+  (function(idx) {
+    var d = document.createElement('div');
+    d.className = 'num-dot';
+    d.textContent = idx + 1;
+    d.onclick = function(e) { e.stopPropagation(); current = idx; render(); };
+    numRow.appendChild(d);
+  })(i);
+}
+
+render();
+</script>
+</body>
+</html>
