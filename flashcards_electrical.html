@@ -80,17 +80,17 @@ header h1 { font-size: clamp(1.4rem, 4vw, 2rem); font-weight: 400; color: var(--
 </div>
 <script>
 var cards = [
-  {{ "q": "Why are electrical hazards especially dangerous compared to other hazards?", "a": "Because <strong>electricity cannot be seen, heard, or smelled</strong>, so workers may not realise they are at risk." }},
-  {{ "q": "What factors affect the severity of an electric shock?", "a": "The severity depends on <strong>the voltage, the current, the duration of contact, and the path the current takes through the body</strong>." }},
-  {{ "q": "What is arc flash?", "a": "Arc flash is <strong>a sudden release of energy caused by an electrical fault</strong>. It can produce extremely high temperatures and cause severe burns at a considerable distance." }},
-  {{ "q": "What is the lockout/tagout procedure?", "a": "It involves <strong>isolating equipment from its energy source, releasing stored energy, and applying a physical lock</strong> to prevent the equipment from being re-energised while work is in progress." }},
-  {{ "q": "Who is allowed to remove the lock in a lockout/tagout procedure?", "a": "<strong>Only the worker who applied it</strong>. No one else is permitted to remove the lock." }},
-  {{ "q": "Why are industrial robots particularly dangerous?", "a": "Because they <strong>move at high speed and with considerable force, and do not stop automatically when a person enters their working area</strong>." }},
-  {{ "q": "What safety devices are used around robotic systems?", "a": "<strong>Safety guards, light curtains, and pressure-sensitive mats</strong> are used to create a protected zone around robotic systems." }},
-  {{ "q": "What is a cobot?", "a": "A cobot is a <strong>collaborative robot designed to work alongside humans</strong>. It is equipped with sensors that detect contact and stop the machine immediately." }},
-  {{ "q": "Are cobots completely safe? Why or why not?", "a": "No. Even cobots <strong>require careful risk assessment and should not be assumed to be completely safe</strong> in all conditions." }},
-  {{ "q": "What must workers and safety professionals do as automation continues to develop?", "a": "They must <strong>stay informed, continuously update their skills, and apply the same systematic approach to new technologies</strong> as to traditional ones." }},
-  {{ "q": "What does 'earthed' mean in the context of electrical safety?", "a": "<strong>Earthed = messo a terra</strong>. It means connected to the ground to prevent dangerous build-up of electrical charge. Example: 'All equipment must be properly earthed.'" }}
+  { "q": "Why are electrical hazards especially dangerous compared to other hazards?", "a": "Because <strong>electricity cannot be seen, heard, or smelled</strong>, so workers may not realise they are at risk." },
+  { "q": "What factors affect the severity of an electric shock?", "a": "The severity depends on <strong>the voltage, the current, the duration of contact, and the path the current takes through the body</strong>." },
+  { "q": "What is arc flash?", "a": "Arc flash is <strong>a sudden release of energy caused by an electrical fault</strong>. It can produce extremely high temperatures and cause severe burns at a considerable distance." },
+  { "q": "What is the lockout/tagout procedure?", "a": "It involves <strong>isolating equipment from its energy source, releasing stored energy, and applying a physical lock</strong> to prevent the equipment from being re-energised while work is in progress." },
+  { "q": "Who is allowed to remove the lock in a lockout/tagout procedure?", "a": "<strong>Only the worker who applied it</strong>. No one else is permitted to remove the lock." },
+  { "q": "Why are industrial robots particularly dangerous?", "a": "Because they <strong>move at high speed and with considerable force, and do not stop automatically when a person enters their working area</strong>." },
+  { "q": "What safety devices are used around robotic systems?", "a": "<strong>Safety guards, light curtains, and pressure-sensitive mats</strong> are used to create a protected zone around robotic systems." },
+  { "q": "What is a cobot?", "a": "A cobot is a <strong>collaborative robot designed to work alongside humans</strong>. It is equipped with sensors that detect contact and stop the machine immediately." },
+  { "q": "Are cobots completely safe? Why or why not?", "a": "No. Even cobots <strong>require careful risk assessment and should not be assumed to be completely safe</strong> in all conditions." },
+  { "q": "What must workers and safety professionals do as automation continues to develop?", "a": "They must <strong>stay informed, continuously update their skills, and apply the same systematic approach to new technologies</strong> as to traditional ones." },
+  { "q": "What does 'earthed' mean in the context of electrical safety?", "a": "<strong>Earthed = messo a terra</strong>. It means connected to the ground to prevent dangerous build-up of electrical charge. Example: 'All equipment must be properly earthed.'" }
 ];
 var current = 0, seen = {}, flipped = false;
 function render() {

@@ -80,17 +80,17 @@ header h1 { font-size: clamp(1.4rem, 4vw, 2rem); font-weight: 400; color: var(--
 </div>
 <script>
 var cards = [
-  {{ "q": "What is a risk assessment?", "a": "A risk assessment is the process of <strong>evaluating the risk a hazard presents and deciding what action to take</strong>. In most countries it is a legal requirement for all employers." }},
-  {{ "q": "What two key questions does a risk assessment involve?", "a": "First: <strong>how likely is it that the hazard will cause harm?</strong> Second: <strong>how serious would that harm be?</strong>" }},
-  {{ "q": "What is the hierarchy of controls?", "a": "It is a framework used by safety professionals to decide which control measures to apply, <strong>from the most effective (elimination) to the least effective (PPE)</strong>." }},
-  {{ "q": "What does elimination mean in the hierarchy of controls?", "a": "Elimination means <strong>removing the hazard completely</strong>. It is the most effective solution, but it is not always possible." }},
-  {{ "q": "What is substitution? Give an example.", "a": "Substitution means <strong>replacing a dangerous material or process with a safer one</strong>. For example, using a less toxic cleaning agent instead of a harmful solvent." }},
-  {{ "q": "What are engineering controls? Give an example.", "a": "Engineering controls are physical measures that reduce exposure, such as <strong>safety guards on machinery or extraction systems for chemical fumes</strong>." }},
-  {{ "q": "What are administrative controls?", "a": "Administrative controls include measures such as <strong>job rotation, reduced working hours near hazardous equipment, and clear written procedures</strong>." }},
-  {{ "q": "Why is PPE placed at the bottom of the hierarchy?", "a": "Because <strong>PPE does not remove the hazard itself</strong> - it simply reduces the worker's exposure to it. It is the least effective form of control." }},
-  {{ "q": "Is one control measure usually enough? Why or why not?", "a": "No. <strong>Several control measures are often used together</strong>, because a single measure is rarely sufficient to protect workers adequately." }},
-  {{ "q": "When must employers review their risk assessments?", "a": "Employers must review them <strong>regularly and whenever working conditions change, new equipment is introduced, or an accident or near-miss occurs</strong>." }},
-  {{ "q": "What does the word 'assessment' mean in Italian? Use it in a sentence.", "a": "<strong>Assessment = valutazione</strong>. Example: 'A risk assessment must be carried out before introducing new machinery.'" }}
+  { "q": "What is a risk assessment?", "a": "A risk assessment is the process of <strong>evaluating the risk a hazard presents and deciding what action to take</strong>. In most countries it is a legal requirement for all employers." },
+  { "q": "What two key questions does a risk assessment involve?", "a": "First: <strong>how likely is it that the hazard will cause harm?</strong> Second: <strong>how serious would that harm be?</strong>" },
+  { "q": "What is the hierarchy of controls?", "a": "It is a framework used by safety professionals to decide which control measures to apply, <strong>from the most effective (elimination) to the least effective (PPE)</strong>." },
+  { "q": "What does elimination mean in the hierarchy of controls?", "a": "Elimination means <strong>removing the hazard completely</strong>. It is the most effective solution, but it is not always possible." },
+  { "q": "What is substitution? Give an example.", "a": "Substitution means <strong>replacing a dangerous material or process with a safer one</strong>. For example, using a less toxic cleaning agent instead of a harmful solvent." },
+  { "q": "What are engineering controls? Give an example.", "a": "Engineering controls are physical measures that reduce exposure, such as <strong>safety guards on machinery or extraction systems for chemical fumes</strong>." },
+  { "q": "What are administrative controls?", "a": "Administrative controls include measures such as <strong>job rotation, reduced working hours near hazardous equipment, and clear written procedures</strong>." },
+  { "q": "Why is PPE placed at the bottom of the hierarchy?", "a": "Because <strong>PPE does not remove the hazard itself</strong> - it simply reduces the worker's exposure to it. It is the least effective form of control." },
+  { "q": "Is one control measure usually enough? Why or why not?", "a": "No. <strong>Several control measures are often used together</strong>, because a single measure is rarely sufficient to protect workers adequately." },
+  { "q": "When must employers review their risk assessments?", "a": "Employers must review them <strong>regularly and whenever working conditions change, new equipment is introduced, or an accident or near-miss occurs</strong>." },
+  { "q": "What does the word 'assessment' mean in Italian? Use it in a sentence.", "a": "<strong>Assessment = valutazione</strong>. Example: 'A risk assessment must be carried out before introducing new machinery.'" }
 ];
 var current = 0, seen = {}, flipped = false;
 function render() {

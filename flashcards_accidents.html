@@ -80,17 +80,17 @@ header h1 { font-size: clamp(1.4rem, 4vw, 2rem); font-weight: 400; color: var(--
 </div>
 <script>
 var cards = [
-  {{ "q": "What is the first priority in any workplace emergency?", "a": "The first priority is to <strong>ensure that no further harm occurs</strong> - making the area safe before attempting to help anyone who has been injured." }},
-  {{ "q": "Why is it dangerous to rush in without assessing the situation?", "a": "Because it can <strong>turn a single casualty into multiple ones</strong>. The area must be made safe first." }},
-  {{ "q": "What information must you give when contacting emergency services?", "a": "You must provide <strong>the location, the nature of the incident, and the number of people involved</strong>." }},
-  {{ "q": "Who should administer first aid?", "a": "First aid should be administered by <strong>a trained first aider</strong> until professional medical help arrives." }},
-  {{ "q": "What does Italian law D.Lgs. 81/2008 require employers to do after an accident?", "a": "It requires employers to <strong>keep a register of all workplace accidents and to report serious injuries to the relevant authorities</strong>." }},
-  {{ "q": "Why is it important to analyse accident records?", "a": "Because it helps <strong>identify patterns, reveal weaknesses in safety procedures, and prevent similar incidents from happening again</strong>." }},
-  {{ "q": "What is a near-miss?", "a": "A near-miss is <strong>a situation in which an accident almost occurred but did not</strong>. It must be reported and investigated." }},
-  {{ "q": "Why are near-misses valuable?", "a": "Because they <strong>reveal hazards before anyone is actually hurt</strong>, giving an opportunity to correct problems in advance." }},
-  {{ "q": "What happens in workplaces where workers are afraid to report near-misses?", "a": "Near-misses go unreported and <strong>the opportunity to prevent a future accident is lost</strong>." }},
-  {{ "q": "How often should emergency procedures be practised?", "a": "They should be <strong>practised regularly through drills</strong> and updated whenever the layout or nature of the work changes." }},
-  {{ "q": "What does the word 'casualty' mean in Italian? Use it in a sentence.", "a": "<strong>Casualty = vittima / ferito</strong>. Example: 'The emergency team attended to the casualty immediately.'" }}
+  { "q": "What is the first priority in any workplace emergency?", "a": "The first priority is to <strong>ensure that no further harm occurs</strong> - making the area safe before attempting to help anyone who has been injured." },
+  { "q": "Why is it dangerous to rush in without assessing the situation?", "a": "Because it can <strong>turn a single casualty into multiple ones</strong>. The area must be made safe first." },
+  { "q": "What information must you give when contacting emergency services?", "a": "You must provide <strong>the location, the nature of the incident, and the number of people involved</strong>." },
+  { "q": "Who should administer first aid?", "a": "First aid should be administered by <strong>a trained first aider</strong> until professional medical help arrives." },
+  { "q": "What does Italian law D.Lgs. 81/2008 require employers to do after an accident?", "a": "It requires employers to <strong>keep a register of all workplace accidents and to report serious injuries to the relevant authorities</strong>." },
+  { "q": "Why is it important to analyse accident records?", "a": "Because it helps <strong>identify patterns, reveal weaknesses in safety procedures, and prevent similar incidents from happening again</strong>." },
+  { "q": "What is a near-miss?", "a": "A near-miss is <strong>a situation in which an accident almost occurred but did not</strong>. It must be reported and investigated." },
+  { "q": "Why are near-misses valuable?", "a": "Because they <strong>reveal hazards before anyone is actually hurt</strong>, giving an opportunity to correct problems in advance." },
+  { "q": "What happens in workplaces where workers are afraid to report near-misses?", "a": "Near-misses go unreported and <strong>the opportunity to prevent a future accident is lost</strong>." },
+  { "q": "How often should emergency procedures be practised?", "a": "They should be <strong>practised regularly through drills</strong> and updated whenever the layout or nature of the work changes." },
+  { "q": "What does the word 'casualty' mean in Italian? Use it in a sentence.", "a": "<strong>Casualty = vittima / ferito</strong>. Example: 'The emergency team attended to the casualty immediately.'" }
 ];
 var current = 0, seen = {}, flipped = false;
 function render() {
